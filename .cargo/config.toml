@@ -1,0 +1,4 @@
+# Static musl builds with the toolchain's own lld, no cross gcc needed.
+[target.aarch64-unknown-linux-musl]
+linker = "rust-lld"
+rustflags = ["-C", "linker-flavor=ld.lld", "-C", "link-self-contained=yes"]

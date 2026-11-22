@@ -1,0 +1,13 @@
+{
+  "match": { "board": "ap-sdxpinn-qcn9224-V2" },
+  "modem": "inseego-fx4200-sdx75",
+  "spec_version": 1,
+  "storage": { "recordings_path": "/data/rayhunter" },
+  "evidence": {
+    "boot_start": {
+      "verdict": "🟢",
+      "date": "2026-11-17",
+      "note": "Quirk: /etc is an overlay mounted by the rc.d script S03mounts-ab after procd has listed /etc/rc.d/S*, so rc.d links added by 'enable' never run at boot. The package rayhunterwrt-host-inseego-fx4200 adds /etc/rc3.d/S99rayhunter, a one-line file that the vendor fakeinit manager evals at runlevel 3; the init script still starts nothing unless rayhunter.main.enabled is 1"
+    }
+  }
+}

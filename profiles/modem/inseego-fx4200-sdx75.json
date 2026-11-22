@@ -1,0 +1,31 @@
+{
+  "spec_version": 1,
+  "diag": {
+    "transport": "diag-router",
+    "session": "dci",
+    "default_codes": [],
+    "stock_consumers": [{ "name": "diag_read", "pidof": "diag_read" }]
+  },
+  "evidence": {
+    "diag_transport": {
+      "verdict": "🟡",
+      "date": "2026-11-17",
+      "note": "diagbuddy over DCI through the jailed diag-router: registered within 2 s of every start (install, 3 restarts, boot; client_id 1). Stream client set 0xB0C0/0xB0EC/0xB0ED/0x1DAF: first 0x1DAF after 0.6 s; in a 64 s n14 band lock (LTE) 0xB0C0 x75, 0xB0EC x2, 0xB0ED x4, 0x1DAF x1764; 0 bad CRC, 0 dropped. Still LTE only: no NR RRC/NAS log codes on HLA-2.27.1; needs rayhunter 0xB0C0 v30"
+    },
+    "diag_coexistence": {
+      "verdict": "🟢",
+      "date": "2026-11-17",
+      "note": "USB DIAG version probe 164/164 during the stream and LTE excursion and 112/112 during a whole equipment-id 0xB mask (4095 codes, one DCI subscribe); diag_read kept its pid throughout; diag-router idle CPU 0,0 ticks/20 s before install and 0,0 after. The whole-0xB mask raised diag-router to 265 ticks/20 s at about 2 min after boot (11 with the USB probe alone; 119 vs 7 in an earlier run at 12 min uptime), back to idle after; dci_failures stayed 0"
+    },
+    "boot_start": {
+      "verdict": "🟢",
+      "date": "2026-11-17",
+      "note": "With rayhunterwrt-host-inseego-fx4200 installed and enabled=1: started by fakeinit runlevel 3 (/etc/rc3.d/S99rayhunter) at boot+77 s and registered by boot+78 s, with no manual start; diag_read (S90) was already up and reads present. Without the host package it never started: /etc/rc.d links added after install are not seen at boot on this host"
+    },
+    "install": {
+      "verdict": "🟢",
+      "date": "2026-11-17",
+      "note": "opkg install of the three local .ipk (diagbuddy, profiles, host package): rc 0, validate rc 0. /overlay free 1608 -> 1600 KB: /usr/bin/diagbuddy and the opkg database land on the active rootfs slot (not overlaid), /etc files in the slot's /overlay upper, /etc/config is on /data, so an A/B slot switch leaves only the UCI file. This opkg segfaults on an empty Depends: line"
+    }
+  }
+}

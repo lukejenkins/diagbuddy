@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: Apache-2.0
+[workspace]
+members = ["crates/dcicore", "crates/diagbuddy"]
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = "symbols"

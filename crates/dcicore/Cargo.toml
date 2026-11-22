@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: Apache-2.0
+[package]
+name = "dcicore"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "DCI client library for the DIAG stack: kernel /dev/diag and userspace diag-router transports, codec and HDLC framing"
+publish = false
+
+# std only, on purpose: no crates.io fetch is ever needed to build for a device.
+[dependencies]
